@@ -1,0 +1,19 @@
+#!/bin/bash
+# usage ./CHSQM1 xxx(.smiles) yyy(.header) rm_proton/rm_hydride/rm_hydrogen
+pyrdkit=/opt/anaconda/envs/_test/bin/python
+$pyrdkit activate_CH.py "$1".smiles "$3" > "$1"_"$3".smiles
+#./prune "$1"+n
+mkdir "$1"_"$3"+"$2"
+cd "$1"_"$3"+"$2"
+$pyrdkit ../smiles2sdf.py ../"$1"_"$3".smiles
+for x in *.sdf; do babel -isdf $x -omop ${x%.*}.mop -xf ../"$2".header; done
+mkdir start_geom
+mv *.sdf start_geom/
+sed -i 's/charge=0/charge=-3/g' *_-3=*.mop
+sed -i 's/charge=0/charge=-2/g' *_-2=*.mop
+sed -i 's/charge=0/charge=-1/g' *_-1=*.mop
+sed -i 's/charge=0/charge=+1/g' *_1=*.mop
+sed -i 's/charge=0/charge=+2/g' *_2=*.mop
+sed -i 's/charge=0/charge=+3/g' *_3=*.mop
+#submit_mopac_batches
+submit_batches_mopac
