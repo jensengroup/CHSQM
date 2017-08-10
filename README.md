@@ -1,5 +1,5 @@
 # CHSQM
-Prediction of labile hydrogens using semiempirical methods
+Prediction of labile carbon hydrogens using semiempirical methods
 
 CHSQM consists of two bash scripts, `CHSQM1` and `CHSQM2`. CHSQM1 and CHSQM2 call other python scripts and bash scripts and calls OpenBabel. Some of the python scripts use RDKit. The method makes use of the semiempirical quantum chemistry program MOPAC.
 
