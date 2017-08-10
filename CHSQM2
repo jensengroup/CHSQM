@@ -1,5 +1,5 @@
 #!/bin/bash
-# ./CHSQM2 folder xxx_rm_xxx.smiles
+# ./CHSQM2 folder 
 pyrdkit=/opt/anaconda/envs/_test/bin/python
 cd "$1"
 grep "FINAL HEAT" *.out > "$1".energies
