@@ -9,10 +9,11 @@ from rdkit import DataStructs
 
 
 filename = sys.argv[1]
-filename2 = sys.argv[2]
+filename2 = filename.split("+")[0]+".smiles"
+#filename2 = sys.argv[2]
 filename3 = "reference_"+filename.split(".")[0].split("_",1)[1]+".energies"
-if len(sys.argv) > 2:
-   pKa_cutoff = float(sys.argv[3])
+if len(sys.argv) > 1:
+   pKa_cutoff = float(sys.argv[2])
 else:
    pKa_cutoff = 1.0
 
